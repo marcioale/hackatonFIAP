@@ -41,23 +41,10 @@ const handlebars = require('express-handlebars')
 }));
 app.set('view engine', 'handlebars');
 
+//Configuração do BodyParser conforme aula 22
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
-
-
-
-
-
-
-
-
-//Post;
-
-
-
-
-   //Configuração do BodyParser conforme aula 22
-   app.use(bodyParser.urlencoded({extended: false}))
-   app.use(bodyParser.json())
 //Rota "/cad" criada abaixo para exibir o formulário HTML via handlebars, aula 20
 app.get('/cad',function(req,res){
  //   res.send('ROTA DE CADASTRO DE POSTS')
