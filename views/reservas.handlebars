@@ -1,0 +1,36 @@
+<h1>Lista de Reservas: </h1>
+<!--
+{{#each reservas}}
+    <h1>Valida2 {{horario}}</h1>
+    <h1>{{espacoId}}</h1>
+    <h1>{{'espaco.capacidade'}}</h1>
+    <h1>teste1 {{'espaco.nome_espaco'}}</h1>
+    <h1>teste2 {{'usuario.nome'}}</h1>
+    <p>teste3 {{reservado}}</p>
+    <hr>
+{{/each}}
+!-->
+<table border="1">
+    <thead>
+        <tr><th>Horario</th>
+            <th>Cod</th>
+            <th>Status</th>
+             <th>Espaço</th>
+            <th>Capacidade</th>
+            <th>Nome Reserva</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each reservas}}
+        <tr>
+            <th>{{horario}}</th>
+            <th>{{espacoId}}</th>
+            <th>{{reservado}}</th>
+             <th>{{'espaco.nome_espaco'}}</th>
+            <th>{{'espaco.capacidade'}}</th>
+            <th>{{'usuario.nome'}}</th>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
