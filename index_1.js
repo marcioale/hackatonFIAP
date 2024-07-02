@@ -3,6 +3,8 @@ const app = express();
 //Chamada do módulo body parser após sua instalação conforme aula 22
 const bodyParser = require('body-parser')
 //Chamada do models para gravar conteudo do formulário do POST - aula 24
+const Post = require('./models/Post.js')
+
 const Reserva = require('./models/cria_tabelas')
 const Espaco = require('./models/cria_tabelas1')
 const Db = require('./models/cria_tabelas2');
@@ -52,7 +54,7 @@ app.get('/cad',function(req,res){
 })
 
 //Rota criada para receber o redirect de quando um post é gravado com sucesso no banco - aula 24 e aula 25
-app.get('/', function(req, res){
+app.get('/teste', function(req, res){
     Reserva.findAll({order: [['id','DESC']]}).then(function(recebeReservas){
     //    res.render('home', {nome: "Victor", sobrenome: "Lima" })
     console.log(recebeReservas)
@@ -143,7 +145,8 @@ app.post('/add',function(req,res){
 //Rota criada para ser exibida quando acessa a /
 app.get("/",function(req,res){
     //res.send("Hello!");
-    res.sendFile(__dirname+ "/html/index.html")
+    //res.sendFile(__dirname+ "/html/index.html")
+    res.render('home1')
 });
 
 //Rota criada para ser exibida quando acessa o caminho /sobre
