@@ -53,9 +53,9 @@ app.get('/cad',function(req,res){
     res.render('formulario.handlebars')
 })
 
-app.get('/cadreserva',function(req,res){
+app.get('/cadastrarespaco',function(req,res){
     //   res.send('ROTA DE CADASTRO DE POSTS')
-       res.render('formularioReserva.handlebars')
+       res.render('formularioEspaco.handlebars')
    })
 
 
