@@ -53,6 +53,12 @@ app.get('/cad',function(req,res){
     res.render('formulario.handlebars')
 })
 
+app.get('/cadreserva',function(req,res){
+    //   res.send('ROTA DE CADASTRO DE POSTS')
+       res.render('formularioReserva.handlebars')
+   })
+
+
 //Rota criada para receber o redirect de quando um post é gravado com sucesso no banco - aula 24 e aula 25
 app.get('/teste', function(req, res){
     Reserva.findAll({order: [['id','DESC']]}).then(function(recebeReservas){
@@ -139,6 +145,30 @@ app.post('/add',function(req,res){
             res.send("Houve um erro" + erro)
        })    
     })
+
+    app.post('/addreserva',function(req,res){
+        // res.send('ROTA DE CADASTRO DE POSTS')       
+           //res.send('FORMULARIO RECEBIDO!')
+           
+           //Capturando dados do formulário enviados via metodo POST, e exibindo na rota com o módulo BodyParser - Aula22
+           //res.send("Texto: "+req.body.titulo+" Conteudo: "+req.body.conteudo)
+    
+           //Função criada para gravar no banco o conteudo do post do formulário da rota /add - aula24
+           Post.create({
+            titulo: req.body.titulo,
+            conteudo: req.body.conteudo
+           }).then(function(){
+             //   res.send("Post criado com sucesso!")
+                res.redirect('/')
+           }).catch(function(erro){
+                res.send("Houve um erro" + erro)
+           })    
+        })
+
+
+
+
+
 
 
 
