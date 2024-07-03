@@ -154,12 +154,12 @@ app.post('/add',function(req,res){
            //res.send("Texto: "+req.body.titulo+" Conteudo: "+req.body.conteudo)
     
            //Função criada para gravar no banco o conteudo do post do formulário da rota /add - aula24
-           Post.create({
-            titulo: req.body.titulo,
-            conteudo: req.body.conteudo
+           Espaco.create({
+            nome_espaco: req.body.espaco,
+            capacidade: req.body.capacidade
            }).then(function(){
              //   res.send("Post criado com sucesso!")
-                res.redirect('/')
+                res.redirect('/espaco')
            }).catch(function(erro){
                 res.send("Houve um erro" + erro)
            })    
