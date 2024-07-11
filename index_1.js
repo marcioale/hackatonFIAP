@@ -68,6 +68,35 @@ app.get('/deletar/:id',function(req,res){
 
 
 
+app.get('/edit/:id', function(req, res){
+    Post.findByPk(req.params.id)
+      .then(post => {
+        res.render('form-edit', {
+          id: req.params.id,
+          titulo: post.titulo,
+          conteudo: post.conteudo
+        })
+      })
+      .catch(err => {
+        res.send('Post não encontrado!')
+      })
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Rota criada para receber o redirect de quando um post é gravado com sucesso no banco - aula 24 e aula 25
 app.get('/teste', function(req, res){
@@ -191,6 +220,36 @@ app.post('/add',function(req,res){
                 res.send("Houve um erro" + erro)
            })    
         })
+
+
+//Rota criada para ser exibida quando acessa a /
+app.get("/home2",function(req,res){
+    //res.send("Hello!");
+    //res.sendFile(__dirname+ "/html/index.html")
+    //res.render('home2')
+    Post.findAll({order: [['id','DESC']]}).then(function(recebePosts){
+        //    res.render('home', {nome: "Victor", sobrenome: "Lima" })
+        console.log(recebePosts)
+        res.render('home2', {posts: recebePosts})
+        })
+     //   res.render('home')
+});
+
+
+app.post('/editado/:id', function(req, res){
+    Post.update({
+      titulo: req.body.titulo,
+      conteudo: req.body.conteudo
+    },
+    {
+      where: { id: req.params.id }
+    }).then(function(){
+      res.redirect('/home2')
+    }).catch(function(err){
+      console.log(err);
+    })
+  })
+
 
 
 
