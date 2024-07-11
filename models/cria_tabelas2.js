@@ -59,7 +59,7 @@ Reserva.belongsTo(Usuario, { foreignKey: 'nomeReservaId',allowNull: true});
 //parental.hasMany(movies, { foreignKey: 'id' })
 //movies.belongsTo(parental, { foreignKey: 'parentalRatingId',allowNull: true});
 
-
-
+//
+//Reserva.sync({force: true})
 
 module.exports = { Reserva, Espaco, Usuario };

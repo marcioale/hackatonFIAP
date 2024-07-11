@@ -58,6 +58,16 @@ app.get('/cadastrarespaco',function(req,res){
        res.render('formularioEspaco.handlebars')
    })
 
+app.get('/deletar/:id',function(req,res){
+    Espaco.destroy({where: {'id': req.params.id}}).then(function(){
+        res.send("Postagem excluída com sucesso!")
+    }).catch(function(erro){
+        res.send("Esta Postagem não existe!")
+    })
+})
+
+
+
 
 //Rota criada para receber o redirect de quando um post é gravado com sucesso no banco - aula 24 e aula 25
 app.get('/teste', function(req, res){
@@ -71,13 +81,30 @@ app.get('/teste', function(req, res){
 
 //Rota criada para receber o redirect de quando um post é gravado com sucesso no banco - aula 24 e aula 25
 app.get('/espaco', function(req, res){
-    Espaco.findAll({order: [['id','DESC']]}).then(function(recebeReservas){
+    Espaco.findAll({order: [['id','DESC']]}).then(function(recebeEspaco){
     //    res.render('home', {nome: "Victor", sobrenome: "Lima" })
-    console.log(recebeReservas)
-    res.render('espaco', {reservas: recebeReservas})
+    console.log(recebeEspaco)
+    res.render('espaco', {reservas: recebeEspaco})
     })
  //   res.render('home')
 })
+
+
+app.get('/espaco2', function(req, res){
+    Espaco.findAll({order: [['id','DESC']]}).then(function(recebeReservas){
+     //   attributes: ['capacidade','espacoId','reservado'],
+    //    res.render('home', {nome: "Victor", sobrenome: "Lima" })
+    console.log(recebeReservas)
+    reservas: recebeReservas
+    console.log("teste do console-------------------------------")
+    console.log(recebeReservas.id)
+   // res.render('espaco', {reservas: recebeReservas})
+    })
+ //   res.render('home')
+})
+
+
+
 
 //Rota criada para fazer o join de reserva
 app.get('/reserva', function(req, res){
