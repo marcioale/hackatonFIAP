@@ -40,10 +40,10 @@ const Espaco = db.sequelize.define('espacos',{
     }
 })
 
-Espaco.hasMany(Reserva, { foreignKey: 'id' })
+//Espaco.hasMany(Reserva, { foreignKey: 'id' })
 Reserva.belongsTo(Espaco, { foreignKey: 'espacoId',allowNull: true});
 
-Usuario.hasMany(Reserva, { foreignKey: 'id' })
+//Usuario.hasMany(Reserva, { foreignKey: 'id' })
 Reserva.belongsTo(Usuario, { foreignKey: 'nomeReservaId',allowNull: true});
 
 

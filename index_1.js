@@ -67,6 +67,15 @@ app.get('/deletar/:id',function(req,res){
     })
 })
 
+app.get('/cancelar/:id',function(req,res){
+  Reserva.destroy({where: {'id': req.params.id}}).then(function(){
+      //res.send("Postagem excluída com sucesso!")
+      res.redirect('/reserva')
+  }).catch(function(erro){
+      res.send("Esta Reserva não existe!")
+  })
+})
+
 
 
 app.get('/edit/:id', function(req, res){
@@ -151,7 +160,7 @@ app.get('/espaco2', function(req, res){
 //Rota criada para fazer o join de reserva
 app.get('/reserva', function(req, res){
     Db.Reserva.findAll({
-        attributes: ['horario','espacoId','reservado'],
+        attributes: ['id','horario','espacoId','reservado'],
         raw: true,
         include: [ {
             model: Db.Espaco,
