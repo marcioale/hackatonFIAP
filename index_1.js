@@ -60,7 +60,8 @@ app.get('/cadastrarespaco',function(req,res){
 
 app.get('/deletar/:id',function(req,res){
     Espaco.destroy({where: {'id': req.params.id}}).then(function(){
-        res.send("Postagem excluída com sucesso!")
+        //res.send("Postagem excluída com sucesso!")
+        res.redirect('/espaco')
     }).catch(function(erro){
         res.send("Esta Postagem não existe!")
     })
@@ -83,7 +84,19 @@ app.get('/edit/:id', function(req, res){
   })
 
 
-
+  app.get('/edit3/:id', function(req, res){
+    Espaco.findByPk(req.params.id)
+      .then(espaco => {
+        res.render('form-edit-espaco', {
+          id: req.params.id,
+          nome_espaco: espaco.nome_espaco,
+          capacidade: espaco.capacidade
+        })
+      })
+      .catch(err => {
+        res.send('Espaço não encontrado!')
+      })
+  })
 
 
 
@@ -113,7 +126,7 @@ app.get('/espaco', function(req, res){
     Espaco.findAll({order: [['id','DESC']]}).then(function(recebeEspaco){
     //    res.render('home', {nome: "Victor", sobrenome: "Lima" })
     console.log(recebeEspaco)
-    res.render('espaco', {reservas: recebeEspaco})
+    res.render('espaco3', {reservas: recebeEspaco})
     })
  //   res.render('home')
 })
@@ -250,7 +263,19 @@ app.post('/editado/:id', function(req, res){
     })
   })
 
-
+  app.post('/editado3/:id', function(req, res){
+    Espaco.update({
+      nome_espaco: req.body.nomeEspaco,
+      capacidade: req.body.capacidadeEspaco
+    },
+    {
+      where: { id: req.params.id }
+    }).then(function(){
+      res.redirect('/espaco')
+    }).catch(function(err){
+      console.log(err);
+    })
+  })
 
 
 
