@@ -19,7 +19,7 @@ const Reserva = db.sequelize.define('reservas',{
     reservado: {
         type: db.Sequelize.BOOLEAN
     },
-    nome_reserva: {
+    nomeReservaId: {
         type: db.Sequelize.INTEGER
     }
 })

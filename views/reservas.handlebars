@@ -1,4 +1,4 @@
-<h1>Lista de Reservas1: </h1>
+<h1>Lista de Reservas3: </h1>
 <!--
 {{#each reservas}}
     <h1>Valida2 {{horario}}</h1>
@@ -13,7 +13,8 @@
 <table border="1">
     <thead>
         <tr><th>Horario</th>
-            <th>Cod</th>
+            <th>id_reserva</th>
+            <th>id_espaco</th>
             <th>Status</th>
              <th>Espaço</th>
             <th>Capacidade</th>
@@ -22,16 +23,21 @@
     </thead>
     <tbody>
         {{#each reservas}}
-        <tr>
+        <tr>            
             <th>{{horario}}</th>
+            <th>{{id}}</th>
             <th>{{espacoId}}</th>
             <th>{{reservado}}</th>
              <th>{{'espaco.nome_espaco'}}</th>
             <th>{{'espaco.capacidade'}}</th>
             <th>{{'usuario.nome'}}</th>
-            <th> <a href="/edit31/{{id}}"><button>Editar</button></a></th>
-            <th> <a href="/cancelar/{{id}}"><button>Cancelar</button></a></th>
-            <th> <a href="/edit31/{{id}}"><button>Reservar</button></a></th>
+            <th><form action="/reservar/{{id}}" method="post">
+                <button type="submit">Reservar</button>
+            </form></a></th>
+            <th><form action="/cancelar/{{id}}" method="post">
+            <!--    <a href="/cancelar/{{id}}"><button>Cancelar</button> !-->
+                <button type="submit">Cancelar</button>
+            </form></a></th>            
         </tr>
         {{/each}}
     </tbody>

@@ -67,17 +67,49 @@ app.get('/deletar/:id',function(req,res){
     })
 })
 
-app.get('/cancelar/:id',function(req,res){
-  Reserva.destroy({where: {'id': req.params.id}}).then(function(){
-      //res.send("Postagem excluída com sucesso!")
-      res.redirect('/reserva')
-  }).catch(function(erro){
-      res.send("Esta Reserva não existe!")
-  })
+
+app.post('/reservar/:id',function(req, res){
+  Reserva.update({
+   reservado: 1,
+   nomeReservaId: 4
+ },
+ {
+   where: { id: req.params.id }
+ }).then(function(){
+   res.redirect('/reservas')
+   //res.send("Reserva cancelada com sucesso!")
+ }).catch(function(err){
+   console.log(err);
+ })
+
 })
 
 
 
+
+
+app.post('/cancelar/:id',function(req, res){
+   Reserva.update({
+    reservado: 0,
+    nomeReservaId: null
+  },
+  {
+    where: { id: req.params.id }
+  }).then(function(){
+    res.redirect('/reservas')
+    //res.send("Reserva cancelada com sucesso!")
+  }).catch(function(err){
+    console.log(err);
+  })
+  
+  /*  Reserva.destroy({where: {'id': req.params.id}}).then(function(){
+      //res.send("Postagem excluída com sucesso!")
+      res.redirect('/reserva')
+  }).catch(function(erro){
+      res.send("Esta Reserva não existe!")
+  }) */
+ })
+ 
 app.get('/edit/:id', function(req, res){
     Post.findByPk(req.params.id)
       .then(post => {
@@ -158,9 +190,9 @@ app.get('/espaco2', function(req, res){
 
 
 //Rota criada para fazer o join de reserva
-app.get('/reserva', function(req, res){
+app.get('/reservas', function(req, res){
     Db.Reserva.findAll({
-        attributes: ['id','horario','espacoId','reservado'],
+        attributes: ['id','horario','espacoId','reservado','nomeReservaId'],
         raw: true,
         include: [ {
             model: Db.Espaco,
@@ -175,8 +207,7 @@ app.get('/reserva', function(req, res){
     }).then(function(teste1){
         console.log(teste1)
         res.render('reservas', {reservas: teste1})
-    })
-        
+    })        
 })
 
 
