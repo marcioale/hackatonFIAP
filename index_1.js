@@ -59,18 +59,26 @@ app.get('/cadastrarespaco',function(req,res){
    })
 
 app.get('/deletar/:id',function(req,res){
+  Reserva.destroy({where: {'espacoId': req.params.id}}).then(function(){
+  
     Espaco.destroy({where: {'id': req.params.id}}).then(function(){
-        //res.send("Postagem excluída com sucesso!")
-        res.redirect('/espaco')
+      //res.send("Postagem excluída com sucesso!")
+      res.redirect('/espaco')
     }).catch(function(erro){
-        res.send("Esta Postagem não existe!")
+        res.send("Erro na exclusão do Espaço!")
     })
+    //res.send("Postagem excluída com sucesso!")
+    //res.redirect('/espaco')
+}).catch(function(erro){
+    res.send("Erro na exclusão das entradas de reserva para o espaço a ser excluído!")
+})
+
 })
 
 
 app.post('/reservar/:id',function(req, res){
   Reserva.update({
-   reservado: 1,
+   reservado: "Reservado",
    nomeReservaId: 4
  },
  {
@@ -84,13 +92,9 @@ app.post('/reservar/:id',function(req, res){
 
 })
 
-
-
-
-
 app.post('/cancelar/:id',function(req, res){
    Reserva.update({
-    reservado: 0,
+    reservado: "Livre",
     nomeReservaId: null
   },
   {
