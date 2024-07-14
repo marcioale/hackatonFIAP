@@ -190,9 +190,6 @@ app.get('/espaco2', function(req, res){
  //   res.render('home')
 })
 
-
-
-
 //Rota criada para fazer o join de reserva
 app.get('/reservas', function(req, res){
     Db.Reserva.findAll({
@@ -213,6 +210,110 @@ app.get('/reservas', function(req, res){
         res.render('reservas', {reservas: teste1})
     })        
 })
+
+
+
+app.get("/login",function(req,res){
+  //res.send("Hello!");
+  //res.sendFile(__dirname+ "/html/index.html")
+  res.render('form-login')
+});
+
+
+
+app.get('/reservas_teste_login', function(req, res){
+
+  Db.Usuario.findAll({
+      attributes: ['id','nome','senha'],
+      where: { nome: 'Daniela Lima', senha: 123456},
+      raw: true
+ //     include: [ {
+ //         model: Db.Espaco,
+ //         attributes: ['nome_espaco','capacidade'],
+ //     },
+ //     raw: true,
+ //     include: {
+ //{
+ //         model: Db.Usuario,
+ //         attributes: ['nome'],
+ //     } ]
+  }).then(function(teste1){
+    //  console.log(teste1)
+    //  console.log(teste1.id)
+    //  res.render('reservas', {reservas: teste1})
+    //{reservas: teste1}
+      if( JSON.parse(JSON.stringify(teste1)) != false )
+        { res.send("Reserva cancelada com sucesso!") } 
+      else { res.send("Erro!") }
+
+  })
+  
+/*
+  Db.Reserva.findAll({
+    attributes: ['id','horario','espacoId','reservado','nomeReservaId'],
+    where: { id: 1 , espacoId: 1},
+    raw: true,
+    include: [ {
+        model: Db.Espaco,
+        attributes: ['nome_espaco','capacidade'],
+    },
+//     raw: true,
+//     include: {
+{
+        model: Db.Usuario,
+        attributes: ['nome'],
+    } ]
+}).then((Reserva) => {
+  if (Reserva) {
+    res.json({ status: true }); // send 200 response if record found
+   } else {
+    // What should be Status Code if record is not found.
+    res.send('Not found')
+   }
+
+  })
+  
+*/
+
+
+
+/*
+  const result =  Db.Reserva.findAll({
+    attributes: ['id','horario','espacoId','reservado','nomeReservaId'],
+    where: { id: 1 , espacoId: 1 },
+    raw: true
+//    include: [ {
+//        model: Db.Espaco,
+//        attributes: ['nome_espaco','capacidade'],
+//    },
+//     raw: true,
+//     include: {
+//{
+//        model: Db.Usuario,
+//        attributes: ['nome'],
+ //   } ]
+});
+//console.log(result.count);
+//print(result)
+*/
+/*
+if( JSON.parse(JSON.stringify(result)) != false )
+  { res.send("Reserva cancelada com sucesso!") } 
+else { res.send("Erro!") }
+*/
+
+
+
+/*
+if( result.length != 0 )
+  { res.send("Reserva cancelada com sucesso!") } 
+else { res.send("Erro!") }
+*/
+
+})
+
+
+
 
 
 app.get('/rotadeteste', function(req, res){
