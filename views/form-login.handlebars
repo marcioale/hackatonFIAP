@@ -1,10 +1,19 @@
 <h1>Realizar Login</h1>
 
-<form action="/logar/{{id}}" method="post">
+<form action="/logar1" method="post">
   <p>Nome do Usuário: </p>
-  <input type="text" name="nomeEspaco" VALUE="{{nome_espaco}}">
+  <input type="text" name="usuario">
   <p>Senha: </p>
  <!-- <textarea name="capacidadeEspaco" rows="8" cols="40" VALUE="{{capacidade}}"></textarea> !-->
-  <input type="text" size="2" name="capacidadeEspaco" VALUE="{{capacidade}}"><br><br>
-  <button type="submit">Efetuar Login</button>
+  <input type="password" size="2" name="senha"><br><br>
+  <br>
+  <input type="radio" name="perfil" value="Professor" checked /> Professor<br />
+  <input type="radio" name="perfil" value="Aluno"/> Aluno<br />
+  <input type="radio" name="perfil" value="Administrador"/> Administrador<br />
+  <br>
+  <button type="submit">Efetuar Login</button> <p>    
+</form>
+
+<form action="/cadastrarusuario" method="get"> 
+  <button type="submit">Criar Novo Usuario</button> 
 </form>

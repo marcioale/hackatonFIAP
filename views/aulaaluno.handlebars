@@ -1,0 +1,38 @@
+<h1>Área do ALUNO - Aulas Disponiveis </h1>
+<h1> </h1>
+
+<!--
+{{#each reservas}}
+    <h1>Nome:  {{nome_espaco}}</h1>
+    <h1>Capacidade: {{capacidade}}</h1>
+    <p>Cód: {{id}}</p>  
+    <hr> 
+{{/each}}
+!-->
+
+<table border="1">
+    <thead>
+        <tr><th>Aula</th>
+            <th>Video da Aula</th>
+            <th>Aluno</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each aulas}}
+        <tr>
+        <!--    <th>{{id}}</th>  !-->
+            <th>{{'professore.aulas.aulaNome'}}</th>
+            <th><iframe src="{{'professore.aulas.aulaURL'}}" frameborder="0" width="420" heigth="315"></iframe></th>
+            <th>{{email}}</th> 
+        <!--     <th><iframe src="https://www.youtube.com/embed/VP-m86q-0yo" frameborder="0" width="420" heigth="315"></iframe></th> !-->
+        <!-- <th><iframe src="https://www.youtube.com/embed/watch?v=7G8OKP1BTPg&list=PL-QAz5R5Rlm7Bs9SlHoX_CjLpgxlppFYZ&index=4" frameborder="0" width="420" heigth="315"></iframe></th> !-->
+        <!-- https://www.youtube.com/watch?v=7G8OKP1BTPg&list=PL-QAz5R5Rlm7Bs9SlHoX_CjLpgxlppFYZ&index=4 !-->
+        <!--    <th> <a href="/alterar/{{id}}"><button>edit</button></a></th>  
+            <th> <a href="/excluir/{{id}}"><button>Excluir</button></a></th>     !-->
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<br>
+<!-- <a href="/cadastrarespaco"><button>Cadastrar Nova  Aula</button></a><br><br> !-->
+<a href="/login"><button>Voltar Tela Inicial</button></a>

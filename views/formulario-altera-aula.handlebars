@@ -1,0 +1,22 @@
+<h1>Alterar Aula</h1>
+
+<form action="/alterado/{{id}}/{{email}}" method="post">
+  <p>Nome da Aula: </p>
+  <input type="text" name="nomeDaAula" VALUE="{{nome_aula}}">
+  <p>URL do Video: </p>
+ <!-- <textarea name="capacidadeEspaco" rows="8" cols="40" VALUE="{{capacidade}}"></textarea> !-->
+  <input type="text" size="100" name="urlDaAula" VALUE="{{aula_url}}">
+ <!--  <p>Id do Professor: </p>
+  <input type="text" name="idDoProfessor" VALUE="{{id_professor}}"><br><br> !-->
+    <h5>Professor: {{email}} <h5>
+ <!-- <input type="text" name="emaildDoProfessor" VALUE="{{email}}"><br><br> !-->
+
+  <button type="submit">Alterar Aula</button>
+</form>
+
+
+
+
+
+
+

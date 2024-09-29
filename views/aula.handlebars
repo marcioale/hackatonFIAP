@@ -1,0 +1,35 @@
+<h1>Lista de Aulas: </h1>
+
+<!--
+{{#each reservas}}
+    <h1>Nome:  {{nome_espaco}}</h1>
+    <h1>Capacidade: {{capacidade}}</h1>
+    <p>Cód: {{id}}</p>  
+    <hr> 
+{{/each}}
+!-->
+
+<table border="1">
+    <thead>
+        <tr><th>Cod</th>
+            <th>Nome Aula</th>
+            <th>Email</th>
+            <th>id</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each aulas}}
+        <tr>
+            <th>{{id}}</th>
+            <th>{{aulaNome}}</th>
+            <th>{{aulaURL}}</th>
+            <th>{{idProfessor}}</th> 
+            <th> <a href="/edit3/{{id}}"><button>edit</button></a></th>  
+            <th> <a href="/deletar/{{id}}"><button>Excluir</button></a></th>     
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<br>
+<a href="/cadastrarespaco"><button>Cadastrar novo espaço</button></a><br><br>
+<a href="/reservas"><button>Ver Reservas</button></a>
