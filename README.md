@@ -1,2 +1,2 @@
-# techChallengeF4
-Projeto utilizado no tech challenge da FIAP para a fase 4
+# Hackton FIAP
+Projeto utilizado projeto do hackaton da FIAP para a final da POSTECH
