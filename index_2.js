@@ -11,7 +11,7 @@ const Espaco = require('./models/cria_tabelas1')
 
 //const Professor = require('./models/cria_tabelas_teste')
 //const Aula = require('./models/cria_tabelas_teste')
-const Db = require('./models/cria_tabelas_teste');
+const Db = require('./models/cria_tabelas_hackaton');
 
 /*Linhas abaixo de conexão com o banco mysql foram movidas para o arquivo /models/db.js na aula 23
 Conexao com banco de dados via Sequelize - aula19
