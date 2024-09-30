@@ -24,7 +24,7 @@ const sequelize = new Sequelize('sistemaDeCadastro','root','root',{
 
 //Declaração do HandleBars ao express - aula 19
 const handlebars = require('express-handlebars');
-const { Usuario } = require("./models/cria_tabelas2.js");
+//const { Usuario } = require("./models/cria_tabelas2.js");
 
 //Configuração do handlebars no express - aula19
 //Config
